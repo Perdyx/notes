@@ -1,11 +1,5 @@
 # Setting up a Raspbian Samba fileshare
 
-## To do
-
-- Set up logging
-- Restrict user access
-- Clean up smb.conf
-
 ## Initial setup
 
 Download the latest Raspbian Lite image from [here](https://www.raspberrypi.org/downloads/raspbian/). Flash the image to your SD card, plug in a keyboard, HDMI, and ethernet cables into the Pi and boot.
