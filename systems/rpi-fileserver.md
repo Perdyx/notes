@@ -62,7 +62,7 @@ Create and mount point and mount the drive to it.<br>
 `sudo mkdir /mnt/smb1`<br>
 `sudo mount /dev/sda1 /mnt/smb1`
 
-Run `sudo blkid` and copy the UUID for /dev/sda1, then append the following line to /etc/fstab:<br>
+Run `blkid` and copy the UUID for /dev/sda1, then append the following line to /etc/fstab:<br>
 `UUID=<drive_uuid> <mount_point> ext4 defaults 0 2`
 
 Change directory to the newly mounted drive and create the following directory structure for the share.
