@@ -1,4 +1,4 @@
-# Setting up a Raspbian Samba fileshare
+# Setting up a Raspberry Pi file server using Raspbian + Samba
 
 ## Initial setup
 
