@@ -1,4 +1,4 @@
-# Setting up a Raspberry Pi file server using Raspbian + Samba
+# Setting up a Raspberry Pi fileserver using Raspbian + Samba
 
 ## Initial setup
 
