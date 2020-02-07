@@ -73,7 +73,7 @@ Change directory to the newly mounted drive and create the following directory s
     - user3 ...
 
 Configure permissions for the shared directory, replacing "<groupname>" with the name of the group you created earlier.<br>
-`sudo chown -R :<groupname>`<br>
+`sudo chown -R :<groupname> shared`<br>
 `sudo chmod 740 shared`
 
 Configure permissions for each user directory, replacing "<groupname>" with the name of the group you created earlier.<br>
