@@ -27,14 +27,13 @@ Set a password for the new user.<br>
 Log out and back in with the new user and delete the pi user.<br>
 `sudo userdel -r pi`
 
-## Connecting via SSH
+## Enabling SSH
+
+Raspbian should already come with ssh installed, but if it isn't, just install it from the repository:<br>
+`sudo apt install openssh`
 
 Enable the ssh server to run at boot.<br>
 `sudo systemctl enable ssh`
-
-## Configuring a static IP address
-
-Edit /et
 
 ## Setting up Samba
 
