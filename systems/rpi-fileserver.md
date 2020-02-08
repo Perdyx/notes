@@ -90,4 +90,16 @@ directory mask = 0777
 public = no
 ```
 
+## Configuring drive power management
+
+Having a USB hard drive running constantly can severely decrease the drive's lifespan. Setting the drive to sleep after a short period can help.
+
+Install hdparm.<br>
+`sudo apt install hdparm`
+
+Reboot to allow hdparm to calibrate.
+
+Set the drive to automatically sleep after five minutes of inactivity.<br>
+`sudo hdparm -B 1 -S 60 /dev/sda`
+
 Reboot to apply the changes, leaving the USB drive plugged in.
