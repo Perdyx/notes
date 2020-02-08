@@ -102,4 +102,4 @@ Reboot to allow hdparm to calibrate.
 Set the drive to automatically sleep after five minutes of inactivity.<br>
 `sudo hdparm -B 1 -S 60 /dev/sda`
 
-Reboot to apply the changes, leaving the USB drive plugged in.
+Reboot to ensure everything has been set up correctly.
