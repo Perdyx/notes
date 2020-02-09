@@ -100,6 +100,7 @@ Install hdparm.<br>
 Reboot to allow hdparm to calibrate.
 
 Set the drive to automatically sleep after five minutes of inactivity.<br>
-`sudo hdparm -B 1 -S 60 /dev/sda`
+`sudo hdparm -B 1 -S 60 /dev/sda`<br>
+To make the changes permanent, add the previous line before the `exit 0` line in /etc/rc.local.
 
 Reboot to ensure everything has been set up correctly.
