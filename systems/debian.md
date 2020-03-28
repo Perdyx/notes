@@ -19,7 +19,7 @@ Log into the root user.
 
 Give a user sudo privileges, replacing USERNAME with your username.
 
-`su -c "/usr/sbin/usermod -aG sudo USERNAME"`
+`su -c "/sbin/adduser USERNAME sudo"`
 
 Log out and back in again for the changes to take effect.
 
@@ -28,14 +28,14 @@ Log out and back in again for the changes to take effect.
 Replace the contents of /etc/apt/sources.list with the following:
 
 ```
-deb http://deb.debian.org/debian stretch main contrib non-free
-deb-src http://deb.debian.org/debian stretch main contrib non-free
+deb http://deb.debian.org/debian buster main contrib non-free
+deb-src http://deb.debian.org/debian buster main contrib non-free
 
-deb http://deb.debian.org/debian-security/ stretch/updates main contrib non-free
-deb-src http://deb.debian.org/debian-security/ stretch/updates main contrib non-free
+deb http://deb.debian.org/debian-security/ buster/updates main contrib non-free
+deb-src http://deb.debian.org/debian-security/ buster/updates main contrib non-free
 
-deb http://deb.debian.org/debian stretch-updates main contrib non-free
-deb-src http://deb.debian.org/debian stretch-updates main contrib non-free
+deb http://deb.debian.org/debian buster-updates main contrib non-free
+deb-src http://deb.debian.org/debian buster-updates main contrib non-free
 ```
 
 Update and upgrade.
