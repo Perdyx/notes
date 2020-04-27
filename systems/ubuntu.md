@@ -2,12 +2,23 @@
 
 ## Contents
 
+- [Enabling predictable network names](#enabling-predictable-network-names)
 - [Installing stock GNOME on Ubuntu](#installing-stock-gnome-on-ubuntu)
   - [Customizing the GNOME shell](#customizing-the-gnome-shell)
     - [Setting the default terminal emulator](#setting-the-default-terminal-emulator)
     - [Classic](#classic)
       - [Rearranging panel items](#rearranging-panel-items)
       - [Disabling the bottom panel](#disabling-the-bottom-panel)
+
+## Enabling predictable network names
+
+Add the following parameter to the `GRUB_CMDLINE_LINUX` line in /etc/default/grub.
+
+`net.ifnames=0`
+
+Then generate a new grub file and reboot.
+
+`sudo grub-mkconfig -o /boot/grub/grub.cfg`
 
 ## Installing stock GNOME on Ubuntu
 
