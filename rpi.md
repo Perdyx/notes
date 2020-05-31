@@ -54,6 +54,10 @@ Delete an interface.
 
 In order to use the Raspberry Pi on the go, it can be beneficial to set up a network access point. This will allow you to SSH into the Pi without having to be connected to a network, and will allow for an internet connection to be forwarded from wireless or ethernet adapters to clients connected to the access point.
 
+If you do not want to go the slightly more reliable and much more configurable route using hostapd and dnsmasq, you can use `nmcli`, a cli tool for managing `network-manager`. To set up a hotspot simple use the following command.
+
+`nmcli device wifi hotspot ifname INTERFACE ssid SSID password PASSWORD`
+
 ### Install hostapd and dnsmasq
 
 Install [hostapd](https://en.wikipedia.org/wiki/Hostapd) and [dnsmasq](https://en.wikipedia.org/wiki/Dnsmasq) and update dhcpcd to the latest version.
