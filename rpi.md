@@ -2,6 +2,7 @@
 
 ## Contents
 
+- [Installation](#installation)
 - [Connecting via wifi](#connecting-via-wifi)
 - [Setting up virtual network interfaces](#setting-up-virtual-network-interfaces)
 - [Setting up an access point (Raspberry Pi only)](#setting-up-an-access-point-raspberry-pi-only)
@@ -14,6 +15,10 @@
   - [Set up IPv4 forwarding](#set-up-ipv4-forwarding)
   - [Configure iptables](#configure-iptables)
   - [Enable hostapd and dnsmasq to run at boot](#configure-hostapd-and-dnsmasq-to-run-at-boot)
+
+## Installation
+
+If you are installing a variant of Raspbian on the Pi Zero/W, you can enable SSH before the first boot, aiding in a fully headless setup, by adding an empty file named "ssh" without an extension in the root of the boot partition on the newly-flashed SD card. This works fine on Windows, however if done from a Linux-based OS, you will need to ensure the file is created AS ROOT, or it will not enable SSH on boot.
 
 ## Connecting via wifi
 
