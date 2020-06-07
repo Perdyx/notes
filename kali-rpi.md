@@ -1,70 +1,59 @@
 # Raspberry Pi
 
-## Contents
-
-- [Installation](#installation)
-- [Connecting via wifi](#connecting-via-wifi)
-- [Setting up virtual network interfaces](#setting-up-virtual-network-interfaces)
-- [Setting up an access point (Raspberry Pi only)](#setting-up-an-access-point-raspberry-pi-only)
-  - [Install hostapd and dnsmasq](#install-hostapd-and-dnsmasq)
-  - [Configure the interfaces](#configure-the-interfaces)
-  - [Configure hostapd](#configure-hostapd)
-    - [Disabling SSID broadcast](#disabling-ssid-broadcast)
-    - [Enabling MAC filtering](#enabling-mac-filtering)
-  - [Configure dnsmasq](#configure-dnsmasq)
-  - [Set up IPv4 forwarding](#set-up-ipv4-forwarding)
-  - [Configure iptables](#configure-iptables)
-  - [Enable hostapd and dnsmasq to run at boot](#configure-hostapd-and-dnsmasq-to-run-at-boot)
-
 ## Installation
 
 If you are installing a variant of Raspbian on the Pi Zero/W, you can enable SSH before the first boot, aiding in a fully headless setup, by adding an empty file named "ssh" without an extension in the root of the boot partition on the newly-flashed SD card. This works fine on Windows, however if done from a Linux-based OS, you will need to ensure the file is created AS ROOT, or it will not enable SSH on boot.
 
-## Connecting via wifi
+## Connecting to a wireless network
 
-Add the following to /etc/network/interfaces:
+Connect using DHCP.
 
-```
-auto wlan0
-iface wlan0 inet dhcp
-wpa-ssid "SSID"
-wpa-psk "PASSPHRASE"
-```
+`nmcli dev wifi con CONN_NAME/SSID password 'PASSWORD'`
 
-If you want a static ip, use
+After connecting via DHCP, you can switch to a static ip by editing the connection.
 
-```
-auto wlan0
-iface wlan0 inet static
-address ADDRESS
-netmask NETMASK
-gateway GATEWAY
-wpa-ssid "SSID"
-wpa-psk "PASSPHRASE"
-```
+`nmcli con mod CONN_NAME ipv4.addresses IP/CIDR ipv4.gateway GATEWAY_IP ipv4.method manual`
+
+Then, reinitialize the connection.
+
+`nmcli con up CONN_NAME`
 
 ## Setting up virtual network interfaces
 
-Virtual network interfaces allow you to split one network card into multiple interfaces. This allows a single card to run in multiple modes and can be extremely useful. Virtual interfaces work just like physical ones, so the usage is the same.
+First, check which modes are supported on your hardware.
 
-Add an interface.
+`iw phy`
+
+### Adding an interface
 
 `iw phy phy0 interface add NAME type MODE && ifconfig NAME up`
 
-Delete an interface.
+### Deleting an interface
 
 `ifconfig NAME down && iw dev NAME del`
 
 ## Setting up an access point
 
-In order to use the Raspberry Pi on the go, it can be beneficial to set up a network access point. This will allow you to SSH into the Pi without having to be connected to a network, and will allow for an internet connection to be forwarded from wireless or ethernet adapters to clients connected to the access point.
+## Easy way (nmcli)
 
-If you do not want to go the slightly more reliable and much more configurable route using hostapd and dnsmasq, you can use `nmcli`, a cli tool for managing `network-manager`. To set up a hotspot at boot put the following in /etc/rc.local before the `exit 0` line.
+Make sure your hardware supports station mode, or this will not work.
+
+`nmcli device wifi hotspot ifname INTERFACE ssid SSID password PASSWORD`
+
+*Note: This does not work with the internal wireless chip on the Raspberry Pi Zero W. It will bring up the AP and the SSID will be broadcast, however the password will not work. System logs will report a PSK mismatch.*
+
+### Persist across reboots
+
+Put the following in /etc/rc.local before the `exit 0` line:
 
 ```
 sleep 60
 nmcli device wifi hotspot ifname INTERFACE ssid SSID password PASSWORD
 ```
+
+## Hard way (hostapd)
+
+This method allows for more control, however is significantly more difficult to set up. I reccommend sticking with the previous method for most applications. 
 
 ### Install hostapd and dnsmasq
 
@@ -135,11 +124,11 @@ wpa_passphrase=raspberry
 
 Edit /etc/default/hostapd and change the value of 'DAEMON_CONF' to '/etc/hostapd/hostapd.conf.' Do the same in /etc/init.d/hostapd.
 
-#### Disabling SSID broadcast
+#### Disable SSID broadcast (optional)
 
 To disable SSID broadcast add `ignore_broadcast_ssid=1` to /etc/hostapd/hostapd.conf.
 
-#### Enabling MAC filtering
+#### Enable MAC filtering (optional)
 
 To enable MAC filtering, create a new file in /etc/hostapd called 'whitelist' with the contents being the MAC addresses of any devices you want to be able to connect to the access point and add the following to /etc/hostapd/hostapd.conf.
 
@@ -178,6 +167,8 @@ Apply the changes.
 
 ### Configure iptables
 
+*Note: Iptables has been replaced by nftables as the standard. Iptables seems to still work, though.*
+
 `update-alternatives --config iptables`
 
 *Note: Be sure to select legacy mode.*
@@ -212,7 +203,7 @@ Make the file executable.
 
 chmod +x /etc/rc.local
 
-### Enable hostapd and dnsmasq to run at boot
+### Set hostapd and dnsmasq to run at boot
 
 `systemctl enable hostapd`
 
