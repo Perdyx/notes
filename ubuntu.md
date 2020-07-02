@@ -1,15 +1,5 @@
 # Ubuntu
 
-## Contents
-
-- [Enabling predictable network names](#enabling-predictable-network-names)
-- [Installing stock GNOME on Ubuntu](#installing-stock-gnome-on-ubuntu)
-  - [Customizing the GNOME shell](#customizing-the-gnome-shell)
-    - [Setting the default terminal emulator](#setting-the-default-terminal-emulator)
-    - [Classic](#classic)
-      - [Rearranging panel items](#rearranging-panel-items)
-      - [Disabling the bottom panel](#disabling-the-bottom-panel)
-
 ## Enabling predictable network names
 
 Add the following parameter to the `GRUB_CMDLINE_LINUX` line in /etc/default/grub.
@@ -35,6 +25,12 @@ To install stock GNOME classic session, run
 For GDM, run the following. When it asks for an option, choose whichever one doesn't mention Ubuntu in the path.
 
 `sudo update-alternatives --config gdm3.css`
+
+### Disabling GNOME's file indexer
+
+It's basically just a CPU warmer :).
+
+`gsettings set org.freedesktop.Tracker.Miner.Files crawling-interval -2`
 
 ### Customizing the GNOME shell
 
