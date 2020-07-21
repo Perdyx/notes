@@ -40,7 +40,7 @@ It's basically just a CPU warmer :).
 
 ##### Using the classic shell theme on regular GNOME to match Adwaita light
 
-`mkdir -p ~/.themes/light/gnome-shell && cp /usr/share/themes/gnome-shell/theme/gnome-classic.css ~/.themes/light/gnome-shell/gnome-shell.css`
+`mkdir -p ~/.themes/Classic/gnome-shell && cp /usr/share/themes/gnome-shell/theme/gnome-classic.css ~/.themes/Classic/gnome-shell/gnome-shell.css`
 
 #### Classic
 
