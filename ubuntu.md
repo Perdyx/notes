@@ -38,6 +38,10 @@ It's basically just a CPU warmer :).
 
 `sudo update-alternatives --config x-terminal-emulator`
 
+##### Using the classic shell theme on regular GNOME to match Adwaita light
+
+`mkdir -p ~/.themes/light/gnome-shell && cp /usr/share/themes/gnome-shell/theme/gnome-classic.css ~/.themes/light/gnome-shell/gnome-shell.css`
+
 #### Classic
 
 ##### Rearranging panel items
