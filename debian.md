@@ -1,15 +1,6 @@
 # Debian
 
-## Contents
-
-- [Configuring Debian](#configuring-debian)
-  - [Setting up sudo](debian-linux-setup.md#setting-up-sudo)
-  - [Configuring sources](debian-linux-setup.md#configuring-sources)
-  - [Installing wireless drivers](debian-linux-setup.md#installing-wireless-drivers)
-  - [Installing net-tools](debian-linux-setup.md#installing-net-tools)
-  - [Installing Gnome](debian-linux-setup.md#installing-gnome)
-
-## Configuring Debian
+## Configuring
 
 ### Setting up sudo
 
@@ -53,3 +44,13 @@ Update and upgrade.
 ### Installing Gnome
 
 `sudo apt install gdm3 x-window-system-core`
+
+### Setting CPU power management
+
+View current setting:
+
+`cat /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference`
+
+Set it to performance:
+
+`echo performance | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference`
