@@ -47,10 +47,14 @@ Update and upgrade.
 
 ### Setting CPU power management
 
+Check available modes:
+
+`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors`
+
 View current setting:
 
-`cat /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference`
+`cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor`
 
-Set it to performance:
+Set mode:
 
-`echo performance | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference`
+`echo MODE | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor`
