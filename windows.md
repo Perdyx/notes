@@ -51,3 +51,18 @@ Add new color schemes to the "schemes" block. The following example is the Dracu
     "yellow" : "#F1FA8C"
 }
 ```
+
+### Manually partitioning Windows installation
+
+During the partitioning section of the Windows 10 installer, delete all partitions and press Shift+F10 to open a command prompt. Type `diskpart` to open the partitioning tool.
+
+Type `list disk` and `select DISK_NUMBER` to select the drive. Be careful not to select the installer drive.
+
+Create and format the ESP:
+
+```
+create partition efi size=SIZE_IN_MB
+format quick fs=fat32 label=System
+```
+
+Exit and refresh the disks in the installer. Proceed to creating a new partition with the default size. Windows will automatically set up other required partitions.
