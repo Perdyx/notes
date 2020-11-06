@@ -1,0 +1,6 @@
+# SSH
+
+## Keyfile permissions
+
+id_rsa: -rw------- (600)<br>
+id_rsa.pub: -rwxrwxrwx (644)
