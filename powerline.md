@@ -4,7 +4,16 @@
 
 `sudo apt install powerline fonts-powerline`
 
-## Neovim
+## Vim
+
+`sudo apt install vim-airline`
+
+Then, add the following to your .vimrc:
+
+```
+let g:airline_powerline_fonts=1
+set ttimeoutlen=10
+```
 
 ## Tmux
 
