@@ -26,4 +26,5 @@ source "{repository_root}/powerline/bindings/tmux/powerline.conf"
 
 ## Zsh
 
-[https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions](https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions)
+Powerlevel9K: [https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions](https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions)<br>
+Powerlevel10K: [https://github.com/romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
